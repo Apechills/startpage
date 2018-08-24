@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media screen and (max-width: 350px) {
+	#editPageText {
+		display: none;
+	}
+}
+
+#editPage {
+	background: #212121;
+	color: white;
+	text-decoration: none;
+	padding: 3px;
+	font-family: Arial;
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	box-shadow: 2px 3px 4px gray;
+}
+
+#containerPencil {
+	width: 20px;
+	height: 20px;
+}
+
+a.addLinkElement {
+	position: absolute;
+	display: none;
+	margin: 2px;
+	right: 2px;
+}
+
+header {
+	position: relative;
+}

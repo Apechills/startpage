@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+form {
+	display: block;
+	max-width: 500px;
+	margin: 0px auto;
+	box-shadow: 2px 3px 4px gray;
+	background-color: #FFF;
+	position: relative;
+}
+
+header {
+	width: 100%;
+}
+
+input.text {
+	width: 95%;
+	margin: 10px auto;
+	display: block;
+	border: 0px;
+	padding: 3px;
+	box-shadow: 1px 2px 3px gray;
+	background: #D1D1D1;
+}
+
+input.text:focus {
+	box-shadow: 3px 4px 5px gray;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+}
+
+.button {
+	margin: 3px 0 5px;
+	background: #D1D1D1;
+	border: none;
+	padding: 5px 9px;
+	position: absolute;
+	right: 2%;
+	bottom: 2px;
+	display: block;
+	box-shadow: 1px 2px 3px gray;
+	color: black;
+}
+
+.button:hover {
+	background: #868686;
+	box-shadow: 3px 4px 5px gray;
+	transition: 0.5s;
+	-webkit-transition: 0.5s ease-in-out;
+}
+
+a.button {
+	display: block;
+	left: 2%;
+	bottom: 2px;
+	width: 40px;
+	height: 17px;
+	line-height: 17px;
+	font-family: MS Shell Dlg \32;
+	font-size: 13.3333px;
+	text-align: center;
+	cursor: default;
+	text-decoration: none;
+}
+
+div#submit {
+	min-height: 40px;
+}
+
+/* ## SELECT ## */
+
+select {
+	border: none;
+	background-color: #D1D1D1;
+	padding: 3px;
+	box-shadow: 1px 2px 3px gray;
+	width: 95%;
+	display: block;
+	margin: 10px auto;
+}
+
+select:focus {
+	box-shadow: 3px 4px 5px gray;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+}
+
+#inputfields {
+	display: none;
+}

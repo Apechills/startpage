@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/* ###BODY### */
+
+.content {
+	display: table;
+	margin: 10px auto;
+	max-width: 1200px;
+	position: relative;
+}
+
+h1 {
+	margin: 10px auto;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	background: #D1D1D1;
+	margin: 0;
+	font-family: Arial;
+}
+
+ul.container {
+	vertical-align: top;
+	background: #FFFFFF;
+	display: inline-block;
+	width: 200px;
+	height: auto;
+	font-family: Arial;
+	margin: 10px;
+	box-shadow: 2px 3px 4px gray;
+}
+
+header {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	color: white;
+	background: #212121;
+	font-family: Arial;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 5px;
+}
+
+li a {
+	color: black;
+	padding: 5px;
+	display: block;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #868686;
+}
+
+/* ## TASKLIST ##*/
+
+#tasklist {
+	width: 50%;
+	max-width: 500px;
+	display: block;
+	margin: 15px auto;
+}
+
+li.task {
+	padding: 5px;
+}
+
+/* ##TOPCONTAINER## */
+
+#topContainer {
+	min-width: 200px;
+	max-width: 800px;
+	display: block;
+	margin: 10px auto;
+}
+
+.searchBar input {
+	padding: 4px;
+	width: 90%;
+	border: none;
+	box-shadow: 2px 3px 4px gray;
+	margin: 6px auto;
+}
+
+.searchBar {
+	text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+	ul.container {
+		display: block;
+		margin: 20px auto 20px auto;
+	}
+}
