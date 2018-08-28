@@ -27,7 +27,7 @@ if (mysql_num_rows($container_result) > 0) {
 ?>
 <form action="Processing/editLinkProcess.php" method="get">
 	<header>Edit link from "<?php echo $container_header_var; ?>"</header>
-	<select name="link" id="itemselect" onClick="checkSelected()">
+	<select name="link" id="itemselect" onChange="checkSelected()">
 		<option value="" selected hidden><em>Select item</em></option>
 		<?php
 			while($row = mysql_fetch_assoc($items_result)) {
@@ -52,5 +52,10 @@ if (mysql_num_rows($container_result) > 0) {
 	function checkSelected() {
 		var option = document.getElementById("itemselect").value;
 		document.getElementById("inputfields").style.display = "block";
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			
+		}
 	}
 </script>
