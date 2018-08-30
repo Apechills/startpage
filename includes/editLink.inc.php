@@ -1,3 +1,6 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 <?php
 require('connect.inc.php');
 
@@ -27,7 +30,7 @@ if (mysql_num_rows($container_result) > 0) {
 ?>
 <form action="Processing/editLinkProcess.php" method="get">
 	<header>Edit link from "<?php echo $container_header_var; ?>"</header>
-	<select name="link" id="itemselect" onChange="checkSelected()">
+	<select name="link" id="itemselect">
 		<option value="" selected hidden><em>Select item</em></option>
 		<?php
 			while($row = mysql_fetch_assoc($items_result)) {
@@ -39,8 +42,10 @@ if (mysql_num_rows($container_result) > 0) {
 		?>
 	</select>
 	<div id="inputfields">
-		<input placeholder="Name" class="text" name="name" type="text">
-		<input placeholder="URL" class="text" name="url" type="url">
+		<input id="Name" placeholder="Name" class="text" name="name" type="text">
+		<input id="URL" placeholder="URL" class="text" name="url" type="url">
+	</div>
+	<div id="AJAXtest">
 	</div>
 	<div id="submit">
 		<a href="../" id="cancel" class="button">Cancel</a>
@@ -48,14 +53,16 @@ if (mysql_num_rows($container_result) > 0) {
 	</div>
 </form>
 
-<script>
-	function checkSelected() {
-		var option = document.getElementById("itemselect").value;
-		document.getElementById("inputfields").style.display = "block";
+<script>	
+	$("#itemselect").change(function() {
+		var uid = $(this).val();
 		
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			
-		}
-	}
+		$("#inputfields").css({"display":"block"});
+		
+		$.get('databaseAJAX.php', 'val=' + uid, function(output) {
+			var data = output.split("|");
+			$("#Name").val(data[0]);
+			$("#URL").val(data[1]);
+		});
+	});
 </script>
