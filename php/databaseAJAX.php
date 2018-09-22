@@ -7,7 +7,7 @@ $sql = "SELECT * FROM items WHERE item_id=".$uid.";";
 if($result = mysql_query($sql)) {
 	while($row = mysql_fetch_assoc($result)) {
 		echo($row['item_name']);
-		echo "|";
+		echo "[µµ]";
 		echo($row['item_href']);
 	}
 }

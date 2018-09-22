@@ -60,7 +60,7 @@ if (mysql_num_rows($container_result) > 0) {
 		$("#inputfields").css({"display":"block"});
 		
 		$.get('databaseAJAX.php', 'val=' + uid, function(output) {
-			var data = output.split("|");
+			var data = output.split("[µµ]");
 			$("#Name").val(data[0]);
 			$("#URL").val(data[1]);
 		});
