@@ -29,7 +29,7 @@
 		<div id="topContainer">
 			<h1>Startpage</h1>
 			<form class="searchBar" action="https://www.google.com/search" method="get">
-				<input type="text" name="q" placeholder="Google Search">
+				<input type="text" id="search" name="q" placeholder="Google Search">
 			</form>
 		</div>
 		
@@ -50,6 +50,22 @@
 		
 		<!-- JAVASCRIPT -->
 		<script type="text/javascript">
+		$(document).ready(function(){
+			$(AJAXCall);
+		});
+
+		$('#search').keyup(function(){			
+			AJAXCall();
+		});
+		
+		function AJAXCall() {			
+			var data = $('#search').val();
+			
+			$.post('includes/AJAXSearch.php', 'data=' + data, function(result) {
+				$('#tbody').html(result);
+			});
+		}	
+		
 		function editCheck() {
 			var checkbox = document.getElementById("editPageCheckbox");
 			var plus = document.getElementsByClassName("addLinkElement");

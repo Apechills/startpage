@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Tasklist</title>
-<link href="../css/main.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
