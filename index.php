@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">	
 <title>Startpage</title>
@@ -28,9 +29,18 @@
 		<!-- HEADER -->
 		<div id="topContainer">
 			<h1>Startpage</h1>
-			<form class="searchBar" action="https://www.google.com/search" method="get">
-				<input type="text" id="search" name="q" placeholder="Google Search">
-			</form>
+		<!--SEARCH-->
+			<div class"searchContainer">
+				<form class="searchBar" action="https://www.google.com/search" method="get">
+					<div class="inputContainer">
+						<input type="text" id="search" name="q" placeholder="Zoeken">
+						<div id="searchResult" class="searchResult">
+							<ul id="searchUl">
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 		
 		<!-- CONTENT -->
@@ -43,29 +53,32 @@
 		<!-- <script src="https://www.reddit.com/hot/.embed?limit=5&t=all" type="text/javascript"></script> -->
 		</div>
 		
-		<!-- TASKLIST -->
-		<?php
-		 include('tasklist/tasklist.php');
-		?>
-		
 		<!-- JAVASCRIPT -->
 		<script type="text/javascript">
+		
+		//SEARCH	
 		$(document).ready(function(){
 			$(AJAXCall);
 		});
 
 		$('#search').keyup(function(){			
 			AJAXCall();
+			$('#searchResult').css("display", "block");
+			
+			if(!$(this).val()) {
+				$('#searchResult').css("display", "none");
+			}
 		});
 		
-		function AJAXCall() {			
+		function AJAXCall() {
 			var data = $('#search').val();
 			
-			$.post('includes/AJAXSearch.php', 'data=' + data, function(result) {
-				$('#tbody').html(result);
+			$.get('includes/AJAXSearch.php', 'data=' + data, function(result) {
+				$('#searchUl').html(result);
 			});
-		}	
+		}
 		
+		//EDIT CHECKBOX	
 		function editCheck() {
 			var checkbox = document.getElementById("editPageCheckbox");
 			var plus = document.getElementsByClassName("addLinkElement");

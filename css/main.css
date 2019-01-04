@@ -41,6 +41,11 @@ header {
 	font-family: Arial;
 }
 
+li.item a {
+	list-style-type: none;
+	padding: 4px;
+}
+
 ul {
 	list-style-type: none;
 	padding: 0;
@@ -82,18 +87,38 @@ li.task {
 
 .searchBar input {
 	padding: 4px;
-	width: 90%;
+	width: 100%;
 	border: none;
 	box-shadow: 2px 3px 4px gray;
-	margin: 6px auto;
+	margin: 6px auto 0px;
 }
 
 .searchBar {
 	text-align: center;
+	padding: 0px 20px;
+}
+
+.inputContainer {
+	position: relative;
+}
+
+.searchResult {
+	background-color: #D1D1D1;
+	padding: 4px;
+	display: none;
+	width: 100%;
+	box-shadow: 2px 3px 4px gray;
+	position: absolute;
+	z-index: 2;
+	text-align: left;
 }
 
 a.button {
 	font-family: 'Roboto', sans-serif;	
+}
+
+ul#searchUl {
+	margin: 0px;
 }
 
 @media screen and (max-width: 500px) {
