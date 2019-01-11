@@ -33,7 +33,7 @@
 			<div class"searchContainer">
 				<form class="searchBar" action="https://www.google.com/search" method="get">
 					<div class="inputContainer">
-						<input type="text" id="search" name="q" placeholder="Zoeken">
+						<input type="text" id="search" name="q" placeholder="Search">
 						<div id="searchResult" class="searchResult">
 							<ul id="searchUl">
 							</ul>
@@ -56,28 +56,22 @@
 		<!-- JAVASCRIPT -->
 		<script type="text/javascript">
 		
-		//SEARCH	
-		$(document).ready(function(){
-			$(AJAXCall);
-		});
+		//SEARCH
 
-		$('#search').keyup(function(){			
-			AJAXCall();
-			$('#searchResult').css("display", "block");
-			
-			if(!$(this).val()) {
-				$('#searchResult').css("display", "none");
-			}
-		});
-		
-		function AJAXCall() {
+		$('#search').keyup(function(){
 			var data = $('#search').val();
 			
 			$.get('includes/AJAXSearch.php', 'data=' + data, function(result) {
 				$('#searchUl').html(result);
 			});
-		}
-		
+			
+			if($('#search').val()) {
+				$('#searchResult').css('display', 'block');
+			} else {
+				$('#searchResult').css('display', 'none');
+			};
+		});
+			
 		//EDIT CHECKBOX	
 		function editCheck() {
 			var checkbox = document.getElementById("editPageCheckbox");
