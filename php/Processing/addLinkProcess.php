@@ -12,7 +12,7 @@ $container_id_var = $_POST['idvar'];
 $sqlinsert = "INSERT INTO `items` (`item_id`, `container_link`, `item_name`, `item_href`) VALUES (NULL, '$container_id_var', '$formName', '$formUrl')";
 
 if (!empty($formUrl) && !empty($formHeader)) {
-	mysql_query($sqlinsert);
+	mysqli_query($con, $sqlinsert);
 	header('Location: ../../');
 } else {
 	header('Location: ../../index.php?errordisplay=1&errormsg='.$emptyError);

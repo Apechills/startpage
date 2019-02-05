@@ -8,7 +8,7 @@ $noselectError = "No item selected, deletion failed.";
 $deleteError = "Error deleting record.";
 
 if(!empty($item_id)){
-	if(mysql_query($removequery)) {
+	if(mysqli_query($con, $removequery)) {
 		echo "Record deleted.";
 		header('Location: ../../');
 	} else {

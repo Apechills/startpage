@@ -3,10 +3,10 @@ require('connect.inc.php');
 $container_name_var = $_GET['container'];		
 $containers_query = "SELECT * FROM containers";
 
-$result = mysql_query($containers_query);
+$result = mysqli_query($con, $containers_query);
 
-if (mysql_num_rows($result) > 0) {
-	while($row = mysql_fetch_assoc($result)) {				
+if (mysqli_num_rows($result) > 0) {
+	while($row = mysqli_fetch_assoc($result)) {				
 		if($row['container_name'] == $container_name_var) {
 			$container_name_var = $row['container_name'];
 			$container_id_var = $row['container_id'];

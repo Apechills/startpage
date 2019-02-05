@@ -11,7 +11,7 @@ $updateError = "Update failed.";
 $editquery = "UPDATE `items` SET item_name='$item_name', item_href='$item_href' WHERE item_id='$item_id'";
 
 if(!empty($item_id) && !empty($item_name) && !empty($item_href)){
-	if(mysql_query($editquery)) {
+	if(mysqli_query($con, $editquery)) {
 		echo "Record updated.";
 		header('Location: ../../');
 	} else {
