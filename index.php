@@ -54,8 +54,7 @@
 		</div>
 		
 		<!-- JAVASCRIPT -->
-		<script type="text/javascript">
-		
+		<script type="text/javascript">		
 		//SEARCH
 
 		$('#search').keyup(function(){
@@ -63,13 +62,13 @@
 			
 			$.get('includes/AJAXSearch.php', 'data=' + data, function(result) {
 				$('#searchUl').html(result);
+				
+				if($('#search').val()) {
+					$('#searchResult').css('display', 'block');
+				} else {
+					$('#searchResult').css('display', 'none');
+				};
 			});
-			
-			if($('#search').val()) {
-				$('#searchResult').css('display', 'block');
-			} else {
-				$('#searchResult').css('display', 'none');
-			};
 		});
 			
 		//EDIT CHECKBOX	

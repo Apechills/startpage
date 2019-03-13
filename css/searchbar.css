@@ -1,0 +1,43 @@
+/* CSS Document */
+
+#topContainer {
+	min-width: 200px;
+	max-width: 800px;
+	display: block;
+	margin: 10px auto;
+}
+
+.searchBar input {
+	padding: 4px;
+	width: 100%;
+	border: none;
+	box-shadow: 2px 3px 4px gray;
+	margin: 6px auto 0px;
+}
+
+.searchBar {
+	text-align: center;
+	padding: 0px 20px;
+}
+
+.inputContainer {
+	position: relative;
+}
+
+.searchResult {
+	background-color: #D1D1D1;
+	display: none;
+	width: 100%;
+	box-shadow: 2px 3px 4px gray;
+	position: absolute;
+	z-index: 2;
+	text-align: left;
+}
+
+a.button {
+	font-family: 'Roboto', sans-serif;	
+}
+
+ul#searchUl {
+	margin: 0px;
+}

@@ -10,7 +10,7 @@ $deleteError = "Error deleting record.";
 if(!empty($item_id)){
 	if(mysqli_query($con, $removequery)) {
 		echo "Record deleted.";
-		header('Location: ../../');
+		header('Location: ../../index.php');
 	} else {
 		header('Location: ../../index.php?errordisplay=1&errormsg='.$deleteError);
 	}

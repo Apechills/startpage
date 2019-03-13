@@ -86,6 +86,7 @@ li.task {
 }
 
 .searchBar input {
+	box-sizing: border-box;
 	padding: 4px;
 	width: 100%;
 	border: none;
@@ -104,7 +105,7 @@ li.task {
 
 .searchResult {
 	background-color: #D1D1D1;
-	padding: 4px;
+	display: block;
 	display: none;
 	width: 100%;
 	box-shadow: 2px 3px 4px gray;
