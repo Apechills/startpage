@@ -2,7 +2,7 @@
 require(__DIR__.'/../../includes/connect.inc.php');
 
 $item_id = $_GET['link'];
-$removequery = "DELETE FROM items WHERE item_id='$item_id'";
+$removequery = "UPDATE items SET deleted = 1 WHERE item_id=$item_id;";
 
 $noselectError = "No item selected, deletion failed.";
 $deleteError = "Error deleting record.";

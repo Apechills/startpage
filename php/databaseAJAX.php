@@ -4,8 +4,8 @@ $uid = $_GET['val'];
 
 $sql = "SELECT * FROM items WHERE item_id=".$uid.";";
 
-if($result = mysql_query($sql)) {
-	while($row = mysql_fetch_assoc($result)) {
+if($result = mysqli_query($con, $sql)) {
+	while($row = mysqli_fetch_assoc($result)) {
 		echo($row['item_name']);
 		echo "[µµ]";
 		echo($row['item_href']);

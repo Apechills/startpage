@@ -12,10 +12,12 @@ $editquery = "UPDATE `items` SET item_name='$item_name', item_href='$item_href' 
 
 if(!empty($item_id) && !empty($item_name) && !empty($item_href)){
 	if(mysqli_query($con, $editquery)) {
+        header('Location: ../../');
 		echo "Record updated.";
-		header('Location: ../../');
+        die();
 	} else {
 		header('Location: ../../index.php?errordisplay=1&errormsg='.$updateError);
+        die();
 	}
 } else {
 	header('Location: ../../index.php?errordisplay=1&errormsg='.$emptyError);

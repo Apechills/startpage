@@ -3,7 +3,7 @@ require('connect.inc.php');
 
 $container_name_var = $_GET['container'];		
 $containers_query = "SELECT * FROM containers";
-$items_query = "SELECT * FROM items WHERE container_link='$container_id_var'";
+$items_query = "SELECT * FROM items WHERE container_link='$container_id_var' AND deleted=0";
 
 $container_result = mysqli_query($con ,$containers_query);
 $items_result = mysqli_query($con, $items_query);

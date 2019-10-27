@@ -6,7 +6,7 @@ $containers_query = "SELECT * FROM containers ORDER BY container_id"; //DEFINE Q
 if ($containers_query_run = mysqli_query($con, $containers_query)) { //RUN QUERY
 	
 	while($container_row = mysqli_fetch_assoc($containers_query_run)) {
-            $items_query = "SELECT * FROM items WHERE container_link=".$container_row['container_id'].";";
+            $items_query = "SELECT * FROM items WHERE container_link=".$container_row['container_id']." AND deleted=0;";
 	        	
 			$name = $container_row['container_name'];
 			$header = $container_row['container_header'];
