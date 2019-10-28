@@ -41,9 +41,18 @@ header {
 	font-family: Arial;
 }
 
-li.item a {
+a.searchitem {
 	list-style-type: none;
-	padding: 4px;
+	padding: 3px 4px;
+	width: 100%;
+	display: block;
+	text-decoration: none;
+	color: black;
+	box-sizing: border-box;
+}
+
+.searchitem:focus {
+	background-color: #868686;
 }
 
 ul {
@@ -112,6 +121,10 @@ li.task {
 	position: absolute;
 	z-index: 2;
 	text-align: left;
+}
+
+.searchUl li:focus {
+	background: black;
 }
 
 a.button {

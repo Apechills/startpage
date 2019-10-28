@@ -31,7 +31,7 @@
 			<h1>Startpage</h1>
 		<!--SEARCH-->
 			<div class"searchContainer">
-				<form class="searchBar" action="https://www.google.com/search" method="get">
+				<form class="searchBar">
 					<div class="inputContainer">
 						<input type="text" id="search" name="q" placeholder="Search">
 						<div id="searchResult" class="searchResult">
@@ -57,19 +57,34 @@
 		<script type="text/javascript">		
 		//SEARCH
 
-		$('#search').keyup(function(){
+		$('#search').keyup(function(e){
 			var data = $('#search').val();
-			
-			$.get('includes/AJAXSearch.php', 'data=' + data, function(result) {
-				$('#searchUl').html(result);
-				
-				if($('#search').val()) {
-					$('#searchResult').css('display', 'block');
-				} else {
-					$('#searchResult').css('display', 'none');
-				};
-			});
+
+			if(e.which != 40 && e.which != 38) {
+				$.get('includes/AJAXSearch.php', 'data=' + data, function(result) {
+					$('#searchUl').html(result);
+
+					if($('#search').val()) {
+						$('#searchResult').css('display', 'block');
+					} else {
+						$('#searchResult').css('display', 'none');
+					};
+				});
+			} else {
+				$(".inputContainer").keyup(function(e) {
+					if($(".searchitem:focus").length == 0) {
+						$(".searchitem").first().focus();
+					}else if(e.which == 40) {
+						$(".searchitem:focus").next().focus();
+					}else if(e.which == 38) {
+						$(".searchitem:focus").prev().focus();
+					}
+				})
+			}
 		});
+		
+			
+		
 			
 		//EDIT CHECKBOX	
 		function editCheck() {
