@@ -57,6 +57,12 @@ a.searchitem {
 	outline: none;
 }
 
+.searchitem:hover {
+	background-color: #868686;
+	border: none;
+	outline: none;
+}
+
 ul {
 	list-style-type: none;
 	padding: 0;

@@ -55,7 +55,7 @@
 		
 		<!-- JAVASCRIPT -->
 		<script type="text/javascript">
-		//$("#search").focus();
+		$("#search").focus();
 				
 		//SEARCH
 
