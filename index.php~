@@ -30,7 +30,7 @@
 		<div id="topContainer">
 			<h1>Startpage</h1>
 		<!--SEARCH-->
-			<div class="searchContainer">
+			<div class"searchContainer">
 				<form class="searchBar">
 					<div class="inputContainer">
 						<input type="text" id="search" name="q" placeholder="Search">
@@ -54,9 +54,7 @@
 		</div>
 		
 		<!-- JAVASCRIPT -->
-		<script type="text/javascript">
-		//$("#search").focus();
-				
+		<script type="text/javascript">		
 		//SEARCH
 
 		$('#search').keyup(function(e){
@@ -65,30 +63,25 @@
 			if(e.which != 40 && e.which != 38) {
 				$.get('includes/AJAXSearch.php', 'data=' + data, function(result) {
 					$('#searchUl').html(result);
+
+					if($('#search').val()) {
+						$('#searchResult').css('display', 'block');
+					} else {
+						$('#searchResult').css('display', 'none');
+					};
 				});
-				
-				if($('#search').val()) {
-					$('#searchResult').css('display', 'block');
-				} else {
-					$('#searchResult').css('display', 'none');
-				};
-				
-			}
-		});
-			
-		$(".searchContainer").keyup(function(e) {
-			if(e.which == 40 || e.which == 38) {
-				if($("#search").val()) {
+			} else {
+				$(".inputContainer").keyup(function(e) {
 					if($(".searchitem:focus").length == 0) {
-						$(".searchitem:first").focus();
+						$(".searchitem").first().focus();
 					}else if(e.which == 40) {
 						$(".searchitem:focus").next().focus();
 					}else if(e.which == 38) {
 						$(".searchitem:focus").prev().focus();
-					}				
-				}
+					}
+				})
 			}
-		})
+		});
 		
 			
 		
