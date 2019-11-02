@@ -7,17 +7,22 @@
 	}
 }
 
-#editPage {
-	background: #212121;
-	color: white;
-	text-decoration: none;
-	padding: 3px;
-	font-family: Arial;
-	display: inline-block;
+#settingsbox {
+	top: 0px;
+	right: 0px;
 	position: absolute;
-	right: 0;
-	top: 0;
-	box-shadow: 2px 3px 4px gray;
+	padding: 3px;
+	background-color: #212121;
+	color: white;
+}
+
+.settingstext {
+	margin-top: 5px;
+}
+
+#settingslink {
+	text-decoration: none;
+	color: white;
 }
 
 #containerPencil {
@@ -27,7 +32,7 @@
 
 a.addLinkElement {
 	position: absolute;
-	display: none;
+	display: inline;
 	margin: 2px;
 	right: 2px;
 }

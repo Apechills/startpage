@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">	
 <title>Startpage</title>
 	<link href="css/main.css" rel="stylesheet" type="text/css">
-	<link href="css/redditTop.css" rel="stylesheet" type="text/css">
-	<link href="css/pageEditing.css" rel="stylesheet" type="text/css">
+	<link href="css/settings.css" rel="stylesheet" type="text/css">
 	<link href="css/alertbox.css" rel="stylesheet" type="text/css"> 
 	<link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
@@ -20,10 +19,15 @@
 			<span class="closebtn" onClick="this.parentElement.style.display='none';">&times;</span>
 			<?php echo($errorMessage); ?>
 		</div>
-			 
-		<!-- EDIT PAGE BOX -->
-		<div id="editPage">
-			<input type="checkbox" id="editPageCheckbox" onClick="editCheck()"><span id="editPageText">Edit page</span>
+		
+		<div id="settingsbox">
+			<!-- EDIT PAGE BOX -->
+				<span class="settingstext">
+					<input type="checkbox" id="editPageCheckbox"><span id="editPageText">Edit page</span>
+					<span> | </span>
+					<a id="settingslink" href="">Settings</a>	
+				</span>
+			</div>
 		</div>
 		
 		<!-- HEADER -->
@@ -89,26 +93,23 @@
 				}
 			}
 		})
-		
-			
-		
-			
-		//EDIT CHECKBOX	
-		function editCheck() {
-			var checkbox = document.getElementById("editPageCheckbox");
-			var plus = document.getElementsByClassName("addLinkElement");
-			if(checkbox.checked == true) {
-				for (var i = 0; i < plus.length; i++) {
-  					plus[i].style.display = 'inline-block';
-				}
+	
+		//EDIT CHECKBOX
+		function editContainerCheck() {
+			if($("#editPageCheckbox").prop("checked") == true) {
+				$(".addLinkElement").show();
 			} else {
-				for (var i = 0; i < plus.length; i++) {
-  					plus[i].style.display = 'none';
-				}
+				$(".addLinkElement").hide();
 			}
-		}			
+		}
+		
+		
+		editContainerCheck();
+		
 			
-		window.onload = editCheck;
+		$("#editPageCheckbox").on("click", function() {
+			editContainerCheck();
+		})
 		</script>
 	</body>
 </html>
