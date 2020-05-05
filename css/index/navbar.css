@@ -1,0 +1,24 @@
+nav.topnav {
+    background-color: #071013;
+    height: 50px;
+    width: 100%;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input.searchBar {
+    border-radius: 22px;
+    width: 40%;
+    height: 60%;
+    border: none;
+    display: block;
+    padding-left: 15px;
+    background-color: #fff;
+    font-family: 'Montserrat';
+}
+
+input.searchBar:focus {
+    outline: 0;
+}
