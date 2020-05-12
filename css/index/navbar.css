@@ -19,6 +19,21 @@ input.searchBar {
     font-family: 'Montserrat';
 }
 
+input.searchBar::-webkit-search-cancel-button {
+    position: relative;
+    right: 10px;
+}
+
 input.searchBar:focus {
     outline: 0;
+}
+
+.navIcon {
+    height: 30px;
+    width: 30px;
+}
+
+.navIconContainer {
+    position: absolute;
+    right: 20px;
 }

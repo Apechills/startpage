@@ -9,7 +9,11 @@
     </head>
     <body>
         <nav class="topnav">
-            <input class="searchBar" placeholder="Search">
+            <input type="search" class="searchBar" placeholder="Search">
+            <div class="navIconContainer">
+                <a href=""><img class="navIcon editIcon" src="_assets/edit-24px.png" alt="editIcon"></a>
+                <a href=""><img class="navIcon settingsIcon" src="_assets/settings-24px.png" alt="settingsIcon"></a>
+            </div>
         </nav>
         <div class="contentWrapper">
             <ul class="linkContainer">
