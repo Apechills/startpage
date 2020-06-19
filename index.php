@@ -2,10 +2,24 @@
 <html>
     <head>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/index/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link rel="stylesheet" type="text/css" href="css/index/container.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <title>Startpage</title>
+    <script>
+        var contentResult;
+
+        $.ajax({
+            method: "GET",
+            url: "php/contentLoading.php",
+            cache: true,
+            success: function(result) {
+                var contentResult = result;
+
+                $(".contentWrapper").html(contentResult);
+            }
+        })
+    </script>
     </head>
     <body>
         <nav class="topnav">
@@ -16,51 +30,10 @@
             </div>
         </nav>
         <div class="contentWrapper">
-            <ul class="linkContainer">
-                <header class="linkContainerHeader">Finance</header>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-            </ul>
-            <ul class="linkContainer">
-                <header class="linkContainerHeader">Finance</header>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-            </ul>
-            <ul class="linkContainer">
-                <header class="linkContainerHeader">Finance</header>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-            </ul>
-            <ul class="linkContainer">
-                <header class="linkContainerHeader">Finance</header>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-            </ul>
-            <ul class="linkContainer">
-                <header class="linkContainerHeader">Finance</header>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-                <li class="linkLi"><a href="" class="linkA">Link1</a></li>
-            </ul>
         </div>
+
+        <script>
+            console.log(contentResult);
+        </script>
     </body>
 </html>
