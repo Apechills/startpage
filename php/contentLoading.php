@@ -1,7 +1,8 @@
 <?php
 require('connect.inc.php');
+$uid = $_GET["uid"];
 
-$loadContainersSql = "SELECT * FROM containers";
+$loadContainersSql = "SELECT * FROM containers WHERE userid = $uid";
 
 if($containerResult = mysqli_query($con, $loadContainersSql)) {
     while($containerRow = mysqli_fetch_assoc($containerResult)) {

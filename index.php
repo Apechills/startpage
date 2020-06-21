@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +16,7 @@
         $.ajax({
             method: "GET",
             url: "php/contentLoading.php",
+            data: {uid: <?php echo $_COOKIE["uid"]; ?>},
             cache: true,
             success: function(result) {
                 var contentResult = result;
@@ -26,14 +31,10 @@
             <input type="search" class="searchBar" placeholder="Search">
             <div class="navIconContainer">
                 <a href=""><img class="navIcon editIcon" src="_assets/edit-24px.png" alt="editIcon"></a>
-                <a href=""><img class="navIcon settingsIcon" src="_assets/settings-24px.png" alt="settingsIcon"></a>
+                <a href="pages/settings.php"><img class="navIcon settingsIcon" src="_assets/settings-24px.png" alt="settingsIcon"></a>
             </div>
         </nav>
         <div class="contentWrapper">
         </div>
-
-        <script>
-            console.log(contentResult);
-        </script>
     </body>
 </html>
