@@ -10,10 +10,20 @@
     </head>
     <body>
         <script>
-            var activeSession = <?php echo $_COOKIE["active"]; ?>;
-            console.log(activeSession);
+            var activeSession = "<?php echo $_COOKIE["active"]; ?>";
+            var activeUsername = "<?php echo $_COOKIE["username"]; ?>";
 
-            
+            $(document).ready(function() {
+                $(".usernameSpan").html(activeUsername);
+
+                if(activeSession) {
+                    $(".loginForm").css("display", "none");
+                    $(".logoutForm").css("display", "block");
+                } else {
+                    $(".loginForm").css("display", "block");
+                    $(".logoutForm").css("display", "none");
+                }
+            })
         </script>
 
         <nav class="topnav">
@@ -28,6 +38,10 @@
                     <input placeholder="Username" name="username" type="text" class="usernameInput">
                     <input placeholder="Password" name="password" type="password" class="passwordInput">
                     <button type="submit" class="loginSubmit">Log in or register</button>
+                </form>
+                <form class="logoutForm" action="../php/logoutProcess.php" method="POST">
+                    <span class="usernameSpan">Username</span>
+                    <button type="submit" class="logoutSubmit">Log out</button>
                 </form>
             </ul>
         </div>

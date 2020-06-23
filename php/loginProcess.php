@@ -25,6 +25,8 @@ if($statement = mysqli_prepare($con, $userValSQL)) {
                     setcookie("uid", $uid, time() + (86400 * 365), "/");
                     setcookie("username", $username, time() + (86400 * 365), "/");
 
+                    header('Location: ../index.php');
+                    exit;
                     echo "success";
                 }
             }
