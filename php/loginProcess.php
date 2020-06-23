@@ -21,6 +21,7 @@ if($statement = mysqli_prepare($con, $userValSQL)) {
             if(mysqli_stmt_fetch($statement)) {
 
                 if(password_verify($password, $hashed_password)) {
+                    setcookie("active", true, time() + (86400 * 365), "/");
                     setcookie("uid", $uid, time() + (86400 * 365), "/");
                     setcookie("username", $username, time() + (86400 * 365), "/");
 

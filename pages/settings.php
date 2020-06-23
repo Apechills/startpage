@@ -8,13 +8,20 @@
     <title>Startpage</title>
     </head>
     <body>
+        <script>
+            var activeSession = <?php echo $_COOKIE["active"]; ?>;
+
+        
+                console.log(activeSession);
+        </script>
+
         <nav class="topnav">
             <div class="navIconContainer">
                 <a href="../index.php"><img class="navIcon homeIcon" src="../_assets/home-24px.png" alt="homeIcon"></a>
             </div>
         </nav>
         <div class="contentWrapper">
-            <form action="../php/loginProcess.php" method="POST">
+            <form class="loginForm" action="../php/loginProcess.php" method="POST">
                 <input name="username" type="text" class="usernameInput">
                 <input name="password" type="password" class="passwordInput">
                 <button type="submit" class="loginSubmit">Submit</button>
