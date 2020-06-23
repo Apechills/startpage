@@ -5,12 +5,3 @@ body {
     background-color: #cdcdcd;
     font-family: 'Montserrat', sans-serif;
 }
-
-div.contentWrapper {
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
-    grid-gap: 20px;
-    max-width: 80%;
-    margin: 10px auto;
-}

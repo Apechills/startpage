@@ -3,22 +3,23 @@
 div.contentWrapper {
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(600px, auto));
     grid-gap: 20px;
     max-width: 80%;
     margin: 10px auto;
 }
 
-ul.linkContainer {
+ul.settingsContainer {
     background-color: #ffffff;
     width: 100%;
     list-style-type: none;
     padding: 0 0 24px;
     border-radius: 15px;
     box-shadow:2px 2px 7px 3px rgba(0,0,0,0.2);
+    margin: auto;
 }
 
-header.linkContainerHeader {
+header.settingsContainerHeader {
     background-color: #071013;
     width: 100%;
     border-radius: 15px 15px 0 0;
@@ -28,18 +29,4 @@ header.linkContainerHeader {
     line-height: 35px;
     color: rgb(255, 255, 255);
     font-size: 18px;
-}
-
-a.linkA {
-    display: block;
-    text-decoration: none;
-    padding: 5px;
-    color: #071013;
-    font-family: 'Roboto';
-    font-weight: 500;
-}
-
-a.linkA:hover {
-    color: #ffffff;
-    background-color: #a8abab;
 }
