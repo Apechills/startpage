@@ -27,11 +27,29 @@ if($statement = mysqli_prepare($con, $userValSQL)) {
 
                     header('Location: ../index.php');
                     exit;
-                    echo "success";
+                } else {
+                    $_SESSION["msg"] = "User already exists or incorrect password.";
+                    header('Location: ../pages/settings.php');
+                    exit;
                 }
             }
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            $insertSQL = "INSERT INTO `users` (`uid`, `username`, `password`) VALUES (NULL, '$username', '$password')";
+            if(mysqli_query($con, $insertSQL)) {
+                $last_id = mysqli_insert_id($con);
+
+                setcookie("active", true, time() + (86400 * 365), "/");
+                setcookie("uid", $last_id, time() + (86400 * 365), "/");
+                setcookie("username", $username, time() + (86400 * 365), "/");
+
+                $_SESSION["msg"] = "User added.";
+                header('Location: ../index.php');
+                exit;
+            }
         }
-    }
+    } 
 }
 
 ?>

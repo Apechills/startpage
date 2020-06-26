@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if ($_SESSION["msg"]) {
+        echo $_SESSION["msg"];
+        $_SESSION["msg"] = "";
+    }    
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
