@@ -1,6 +1,13 @@
 <?php
     session_start();
 
+    //echo "Test";
+
+    if (!$_COOKIE["active"]) {
+        header('Location: pages/settings.php');
+        exit;
+    }
+
     if ($_SESSION["msg"]) {
         echo $_SESSION["msg"];
         $_SESSION["msg"] = "";
