@@ -1,14 +1,17 @@
 <?php
 require('connect.inc.php');
-$uid = $_GET["uid"];
+$uid = $_POST["uid"];
 
 $loadContainersSql = "SELECT * FROM containers WHERE userid = $uid";
 
 if($containerResult = mysqli_query($con, $loadContainersSql)) {
     while($containerRow = mysqli_fetch_assoc($containerResult)) {
         $containerId = $containerRow['container_id'];
+        $containerHeader = $containerRow['container_header'];
 
-        echo '<ul class="linkContainer"><header class="linkContainerHeader">'.$containerRow['container_header'].'</header>';
+        echo '  <ul id="'.$containerId.'" class="linkContainer">
+                <div class="editOverlay hidden"><img class="editOverlayIcon" src="_assets/editCircle.png"></div>
+                <header class="linkContainerHeader">'.$containerHeader.'<input disabled hidden value="'.$containerId.'"></header>';
 
         $loadItemsSql = "SELECT * FROM items WHERE container_link='$containerId' AND deleted=0;";
 

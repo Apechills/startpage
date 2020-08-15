@@ -5,3 +5,7 @@ body {
     background-color: #cdcdcd;
     font-family: 'Montserrat', sans-serif;
 }
+
+.btn {
+    cursor: pointer;
+}
