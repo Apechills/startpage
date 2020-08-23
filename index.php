@@ -66,7 +66,7 @@
                     
                     var containerId = $(this).parent().find(".linkContainerHeader").find("input").val();
 
-                    window.location.href = "pages/editContainer.php?containerId="+containerId;
+                    window.location.replace("pages/editContainer.php?containerId="+containerId);
                     console.log(containerId);
                 })
             }
@@ -84,8 +84,8 @@
             <input type="search" class="searchBar" placeholder="Search">
             <div class="navIconContainer">
                 <input class="editStatus" value="false" disabled hidden>
-                <span class="editBtn btn"><img class="navIcon editIcon" src="_assets/edit-24px.png" alt="editIcon"></span>
-                <a href="pages/settings.php"><img class="navIcon settingsIcon" src="_assets/settings-24px.png" alt="settingsIcon"></a>
+                <span class="editBtn btn"><img class="navIcon editIcon" src="_assets/edit-24px.svg" alt="editIcon"></span>
+                <a href="pages/settings.php"><img class="navIcon settingsIcon" src="_assets/settings-24px.svg" alt="settingsIcon"></a>
             </div>
         </nav>
         <div class="contentWrapper">

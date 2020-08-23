@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+div.contentWrapper {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(800px, auto));
+    grid-gap: 20px;
+    max-width: 80%;
+    margin: 10px auto;
+}
+
+.editContainer {
+    background-color: #ffffff;
+    width: 100%;
+    list-style-type: none;
+    padding: 0 0 24px;
+    border-radius: 15px;
+    box-shadow:2px 2px 7px 3px rgba(0,0,0,0.2);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editInputWrapper {
+    padding: 3px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.editInputWrapper input {
+    border:none;
+    border-bottom: 4px solid #a8abab;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: rgba(205, 205, 205, 1);
+    padding: 12px 16px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+.editInputWrapper input:focus {
+    background-color: #a8abab;
+    border-bottom: 4px solid #cdcdcd;
+    transition: 0.2s;
+}
+
+.editItemName {
+    width: 29%;
+}
+
+.editItemHref {
+    width: 64%;
+}
+
+.deleteItemContainer {
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #cdcdcd;
+    border-bottom: 4px solid #a8abab;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+}
+
+.deleteItemButton {
+    width: 70%;
+}
+
+.editContainerHeader {
+    background-color: #071013;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+.headerInput {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(7, 16, 19, 0);
+    width: 100%;
+    border: none;
+    height: 100%;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.headerInput:focus {
+    outline: none;
+}

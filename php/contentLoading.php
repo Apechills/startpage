@@ -10,7 +10,7 @@ if($containerResult = mysqli_query($con, $loadContainersSql)) {
         $containerHeader = $containerRow['container_header'];
 
         echo '  <ul id="'.$containerId.'" class="linkContainer">
-                <div class="editOverlay hidden"><img class="editOverlayIcon" src="_assets/editCircle.png"></div>
+                <div class="editOverlay hidden"><img class="editOverlayIcon" src="_assets/edit-24px.svg"></div>
                 <header class="linkContainerHeader">'.$containerHeader.'<input disabled hidden value="'.$containerId.'"></header>';
 
         $loadItemsSql = "SELECT * FROM items WHERE container_link='$containerId' AND deleted=0;";

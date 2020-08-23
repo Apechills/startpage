@@ -37,7 +37,7 @@
 
         <nav class="topnav">
             <div class="navIconContainer">
-                <a href="../index.php"><img class="navIcon homeIcon" src="../_assets/home-24px.png" alt="homeIcon"></a>
+                <a href="../index.php"><img class="navIcon homeIcon" src="../_assets/home-24px.svg" alt="homeIcon"></a>
             </div>
         </nav>
         <div class="contentWrapper">
