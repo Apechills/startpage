@@ -24,7 +24,7 @@ if ($result = mysqli_query($con, $containerSql)) {
                 $itemName = $itemRow['item_name'];
                 $itemHref = $itemRow['item_href'];
 
-                $itemInput .= '<div class="editInputWrapper"><input id="'. $itemId .'" class="editItemName" value="'. $itemName .'"><input class="editItemHref" value="'. $itemHref .'"><div class="deleteItemContainer"><img class="deleteItemButton" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
+                $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName" value="'. $itemName .'"><input class="editItemHref" value="'. $itemHref .'"><div class="deleteItemContainer"><img class="deleteItemButton" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
             }
         }
     }
@@ -48,13 +48,19 @@ if ($result = mysqli_query($con, $containerSql)) {
         $(document).ready(function() {
             $(".editContainer").append('<?php echo $itemInput; ?>');
 
-            $(".headerInput").val('<?php echo $containerHeader; ?>').focus();
+            $(".headerInput").attr('id', <?php echo $containerId ?>).val('<?php echo $containerHeader; ?>').focus();
 
             $(".btn").on("click", function() {
                 if($(this).hasClass("saveBtn")) {
+                    var containerId = $(".headerInput").attr('id');
+
+                    $(".editInputWrapper").each(function() {
+                        var 
+                    })
 
                 } else if($(this).hasClass("cancelBtn")) {
                     window.location.replace("../index.php");
+
                 }
             })
 
