@@ -1,6 +1,6 @@
 ## CHANGELOG
 
-`UNRELEASED`
+`RELEASED`
 ### [2.0.0-beta] - 04/09/2020
 #### Added
 - Basic layout created.
