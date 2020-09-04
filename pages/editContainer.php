@@ -52,15 +52,35 @@ if ($result = mysqli_query($con, $containerSql)) {
 
             $(".btn").on("click", function() {
                 if($(this).hasClass("saveBtn")) {
-                    var containerId = $(".headerInput").attr('id');
+                    var containerId = $(".headerInput").attr("id");
+                    var containerHeader = $(".headerInput").val();
+                    var itemObj = [];
 
                     $(".editInputWrapper").each(function() {
-                        var 
+                        var itemId = $(this).attr("id");
+                        var itemName = $(this).find(".editItemName").val();
+                        var itemHref = $(this).find(".editItemHref").val();
+
+                        var obj = {};
+
+                        obj["itemId"]=itemId;
+                        obj["itemName"]=itemName;
+                        obj["itemHref"]=itemHref;
+
+                        itemObj.push(obj);
+                    })
+
+                    $.ajax({
+                        method: "POST",
+                        url: "../php/editContainerProcess.php",
+                        data: {containerId: containerId, containerHeader: containerHeader, items: itemObj},
+                        success: function(result) {
+                            window.location.replace("../index.php");
+                        }
                     })
 
                 } else if($(this).hasClass("cancelBtn")) {
                     window.location.replace("../index.php");
-
                 }
             })
 
