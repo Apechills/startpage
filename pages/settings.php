@@ -26,11 +26,11 @@
                 $(".usernameSpan").html(activeUsername);
 
                 if(activeSession) {
-                    $(".loginForm").css("display", "none");
-                    $(".logoutForm").css("display", "block");
+                    $(".loginForm").hide();
+                    $(".logoutForm").show();
                 } else {
-                    $(".loginForm").css("display", "block");
-                    $(".logoutForm").css("display", "none");
+                    $(".loginForm").show();
+                    $(".logoutForm").hide();
                 }
             })
         </script>

@@ -3,14 +3,15 @@ form {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    justify-content: space-between;
 }
 
 input[type=text], input[type=password] {
     border: 2px solid black;
     border-radius: 5px;
     padding: 6px 3px;
-    display: inline-block;
-    vertical-align: middle;
+    flex-grow: 2;
+    margin: 0px 2px;
 }
 
 input:focus {
