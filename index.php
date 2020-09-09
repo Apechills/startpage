@@ -35,7 +35,7 @@
             success: function(result) {
                 var contentResult = result;
 
-                $(".contentWrapper").html(contentResult);
+                $(".addContainer").before(contentResult);
             }
         })
 
@@ -60,7 +60,7 @@
                 /*$(window).on("beforeunload", function() {
                     return "";
                 });*/
-                $(".editOverlay").removeClass("hidden");
+                $(".editOverlay, .addContainer").removeClass("hidden");
 
                 $(".editOverlay").on("click", function() {
                     
@@ -69,12 +69,16 @@
                     window.location.replace("pages/editContainer.php?containerId="+containerId);
                     console.log(containerId);
                 })
+
+                $(".addContainer").on("click", function() {
+                    window.location.replace("pages/editContainer.php");
+                })
             }
 
             function disableEditing() {
                 $(window).off("beforeunload");
 
-                $(".editOverlay").addClass("hidden");
+                $(".editOverlay, .addContainer").addClass("hidden");
             }
         })
     </script>
@@ -89,6 +93,9 @@
             </div>
         </nav>
         <div class="contentWrapper">
+            <ul class="addContainer hidden">
+                <img class="addOverlayIcon" src="_assets\add-white-18dp.svg" alt="addContainer">
+            </ul>
         </div>
     </body>
 </html>

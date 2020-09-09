@@ -19,7 +19,13 @@ if(mysqli_query($con, $updateContainerSql)) {
 		$itemId = $value["itemId"];
 		$itemName = $value["itemName"];
         $itemHref = $value["itemHref"];
-        $containerLink = $containerId;
+        $containerLink = mysqli_insert_id($con);
+
+        if($containerLink == 0) {
+            $containerLink = $containerId;
+        }
+
+        echo $containerLink;
         
 		$updateItemsSql = "INSERT INTO `items` (item_id, container_link, item_name, item_href)
         VALUES ('$itemId', '$containerLink', '$itemName', '$itemHref')
@@ -28,7 +34,7 @@ if(mysqli_query($con, $updateContainerSql)) {
         item_href = values(item_href)";
 			
 		if(mysqli_query($con, $updateItemsSql)) {
-			echo "ITEM SAVE SUCCESS";
+            echo "ITEM SAVE SUCCESS";
 		} else {
             echo "ITEM SAVE FAILED";
         }

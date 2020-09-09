@@ -47,12 +47,16 @@ if ($result = mysqli_query($con, $containerSql)) {
 <script>
         $(document).ready(function() {
             var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="deleteItemContainer"><img class="deleteItemButton" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
+            var containerId = '<?php echo $containerId; ?>';
 
             $(".addItemBtn").before('<?php echo $itemInput; ?>');
 
-            $(".headerInput").attr('id', <?php echo $containerId ?>).val('<?php echo $containerHeader; ?>').focus();
-
+            if(containerId != '') {
+                $(".headerInput").attr('id', <?php echo $containerId ?>).val('<?php echo $containerHeader; ?>').focus();
+            }
+            
             $(".btn").on("click", function() {
+
                 if($(this).hasClass("saveBtn")) {
                     var containerId = $(".headerInput").attr("id");
                     var containerHeader = $(".headerInput").val();
@@ -101,7 +105,7 @@ if ($result = mysqli_query($con, $containerSql)) {
     </nav>
     <div class="contentWrapper">
         <ul class="editContainer">
-            <header class="editContainerHeader"><input class="headerInput" value=""></header>
+            <header class="editContainerHeader"><input class="headerInput" value="" placeholder="Container title here"></header>
             <div class="addItemBtn btn"><img class="addItemButton" alt="addicon" src="../_assets/add_circle_outline-black-18dp.svg"></div>
         </ul>
     </div>
