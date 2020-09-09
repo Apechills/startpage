@@ -69,7 +69,7 @@ div.contentWrapper {
 }
 
 .deleteItemButton {
-    width: 70%;
+    height: 70%;
 }
 
 .editContainerHeader {
@@ -94,4 +94,24 @@ div.contentWrapper {
 
 .headerInput:focus {
     outline: none;
+}
+
+.addItemBtn {
+    margin-top: 3px;
+    width: 90%;
+    border:none;
+    border-bottom: 4px solid #a8abab;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: rgba(205, 205, 205, 1);
+    height: 44px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addItemBtn img {
+    height: 70%;
 }
