@@ -24,7 +24,7 @@ if ($result = mysqli_query($con, $containerSql)) {
                 $itemName = $itemRow['item_name'];
                 $itemHref = $itemRow['item_href'];
 
-                $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName" value="'. $itemName .'"><input class="editItemHref" value="'. $itemHref .'"><div class="deleteItemContainer"><img class="deleteItemButton" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
+                $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName" value="'. $itemName .'"><input class="editItemHref" value="'. $itemHref .'"><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><img class="deleteItemIcon" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
             }
         }
     }
@@ -46,7 +46,7 @@ if ($result = mysqli_query($con, $containerSql)) {
 </head>
 <script>
         $(document).ready(function() {
-            var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="deleteItemContainer"><img class="deleteItemButton" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
+            var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><img class="deleteItemIcon" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
             var containerId = '<?php echo $containerId; ?>';
 
             $(".addItemBtn").before('<?php echo $itemInput; ?>');
@@ -54,9 +54,25 @@ if ($result = mysqli_query($con, $containerSql)) {
             if(containerId != '') {
                 $(".headerInput").attr('id', <?php echo $containerId ?>).val('<?php echo $containerHeader; ?>').focus();
             }
-            
-            $(".btn").on("click", function() {
 
+            //DYNAMIC BUTTONS
+            $(".contentWrapper").on("click", ".dBtn", function() {
+                //ADD ITEM
+                if($(this).hasClass("addItemBtn")) {
+                    $(".addItemBtn").before(itemRow);
+                }
+
+                //DELETE ITEM
+                if($(this).hasClass("deleteItemBtn")) {
+                    $(this).find(".deleted").val(1);
+
+                    $(this).parent().hide();
+                }
+            })
+
+            //NAVBAR BUTTONS
+            $(".navBtn").on("click", function() {
+                //SAVE BUTTON
                 if($(this).hasClass("saveBtn")) {
                     var containerId = $(".headerInput").attr("id");
                     var containerHeader = $(".headerInput").val();
@@ -66,47 +82,63 @@ if ($result = mysqli_query($con, $containerSql)) {
                         var itemId = $(this).attr("id");
                         var itemName = $(this).find(".editItemName").val();
                         var itemHref = $(this).find(".editItemHref").val();
+                        var deleted = $(this).find(".deleted").val();
 
                         var obj = {};
 
                         obj["itemId"]=itemId;
                         obj["itemName"]=itemName;
                         obj["itemHref"]=itemHref;
+                        obj["deleted"]=deleted;
 
                         itemObj.push(obj);
+
+                        $.ajax({
+                        method: "POST",
+                        url: "../php/editContainerProcess.php",
+                        data: {containerId: containerId, containerHeader: containerHeader, items: itemObj},
+                            success: function(result) {
+                                window.location.replace("../index.php");
+                            }
+                        })
                     })
+
+                }
+
+                //CANCEL BUTTON
+                if($(this).hasClass("cancelBtn")) {
+                    window.location.replace("../index.php");
+                }
+
+                //REMOVE CONTAINER BUTTON
+                if($(this).hasClass("removeBtn")) {
+                    var containerId = $(".headerInput").attr("id");
 
                     $.ajax({
                         method: "POST",
                         url: "../php/editContainerProcess.php",
-                        data: {containerId: containerId, containerHeader: containerHeader, items: itemObj},
+                        data: {deleteContainer: 1, containerId: containerId},
                         success: function(result) {
                             window.location.replace("../index.php");
                         }
                     })
-
-                } else if($(this).hasClass("cancelBtn")) {
-                    window.location.replace("../index.php");
-
-                } else if($(this).hasClass("addItemBtn")) {
-                    $(".addItemBtn").before(itemRow);
-
                 }
             })
-
         })
+
 </script>
 <body>
     <nav class="topnav">
         <div class="navIconContainer">
-            <span class="saveBtn btn"><img class="navIcon saveIcon" src="../_assets/save-white-18dp.svg" alt="saveIcon"></span>
-            <span class="cancelBtn btn"><img class="navIcon cancelIcon" src="../_assets/cancel-white-18dp.svg" alt="cancelIcon"></span>
+            <span class="removeBtn navBtn"><img class="navIcon removeIcon" src="../_assets/delete-white-18dp.svg" alt="removeIcon"></span>
+            <span class="saveBtn navBtn"><img class="navIcon saveIcon" src="../_assets/save-white-18dp.svg" alt="saveIcon"></span>
+            <span class="cancelBtn navBtn"><img class="navIcon cancelIcon" src="../_assets/cancel-white-18dp.svg" alt="cancelIcon"></span>
         </div>
     </nav>
     <div class="contentWrapper">
         <ul class="editContainer">
             <header class="editContainerHeader"><input class="headerInput" value="" placeholder="Container title here"></header>
-            <div class="addItemBtn btn"><img class="addItemButton" alt="addicon" src="../_assets/add_circle_outline-black-18dp.svg"></div>
+            <div class="addItemBtn dBtn"><img class="addItemButton" alt="addicon" src="../_assets/add_circle_outline-black-18dp.svg"></div>
         </ul>
     </div>
 </body>

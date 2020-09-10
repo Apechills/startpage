@@ -56,7 +56,7 @@ div.contentWrapper {
     width: 64%;
 }
 
-.deleteItemContainer {
+.deleteItemBtn {
     box-sizing: border-box;
     border-radius: 3px;
     background-color: #cdcdcd;
@@ -68,7 +68,7 @@ div.contentWrapper {
     width: 5%;
 }
 
-.deleteItemButton {
+.deleteItemIcon {
     height: 70%;
 }
 

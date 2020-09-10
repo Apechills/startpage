@@ -2,7 +2,7 @@
 require('connect.inc.php');
 $uid = $_POST["uid"];
 
-$loadContainersSql = "SELECT * FROM containers WHERE userid = $uid";
+$loadContainersSql = "SELECT * FROM containers WHERE userid = $uid AND deleted=0";
 
 if($containerResult = mysqli_query($con, $loadContainersSql)) {
     while($containerRow = mysqli_fetch_assoc($containerResult)) {

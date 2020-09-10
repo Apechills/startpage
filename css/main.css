@@ -6,6 +6,6 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.btn {
+.btn, .dBtn, .navBtn {
     cursor: pointer;
 }
