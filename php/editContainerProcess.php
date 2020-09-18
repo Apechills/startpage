@@ -33,10 +33,14 @@ if($deleteContainer != 1) {
             item_href = values(item_href),
             deleted = values(deleted)";
             
-            if(mysqli_query($con, $updateItemsSql)) {
-                echo "ITEM SAVE SUCCESS";
+            if($itemName != "" && $itemHref != "") {
+                if(mysqli_query($con, $updateItemsSql)) {
+                    echo "ITEM SAVE SUCCESS";
+                } else {
+                    echo "ITEM SAVE FAILED";
+                }
             } else {
-                echo "ITEM SAVE FAILED";
+                echo "EMPTY ITEMS DETECTED";
             }
         } 
     }  
