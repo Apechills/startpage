@@ -25,6 +25,8 @@
         <script>
             var contentResult;
 
+            $(".searchBar").hide(); //TEMPORARY
+
             $.ajax({
                 method: "POST",
                 url: "php/contentLoading.php",
