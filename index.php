@@ -25,7 +25,7 @@
         <script>
             var contentResult;
 
-            $(".searchBar").hide(); //TEMPORARY
+            
 
             $.ajax({
                 method: "POST",
@@ -40,6 +40,8 @@
             })
 
             $(document).ready(function() {
+                $(".searchBar").hide(); //TEMPORARY
+
                 var editStatus = $(".editStatus").val();
 
                 $(".editBtn").on("click", function() {
