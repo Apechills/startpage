@@ -8,7 +8,6 @@
 - Content loading.
 - Content updating.
 
-`UNRELEASED`
 ### [2.0.1-beta] - 18/09/2020
 #### Added
 - System for detecting empty fields.
@@ -17,3 +16,6 @@
 #### Changed
 - Location of remove container button for intuitivness.
 - Save button now only appears when a change has been made.
+- Temporarily hid search bar.
+
+`UNRELEASED`
