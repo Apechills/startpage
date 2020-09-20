@@ -49,6 +49,7 @@ if ($result = mysqli_query($con, $containerSql)) {
             var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><img class="deleteItemIcon" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
             var containerId = '<?php echo $containerId; ?>';
 
+            $(".saveBtn").hide();
             $(".addItemBtn").before('<?php echo $itemInput; ?>');
 
             if(containerId != '') {
@@ -67,6 +68,23 @@ if ($result = mysqli_query($con, $containerSql)) {
                     $(this).find(".deleted").val(1);
 
                     $(this).parent().hide();
+                }
+
+                //REMOVE CONTAINER BUTTON
+                if($(this).hasClass("removeBtn")) {
+                    var containerId = $(".headerInput").attr("id");
+
+                    if(confirm("Are you sure you want to remove this container?")) {
+                        $.ajax({
+                            method: "POST",
+                            url: "../php/editContainerProcess.php",
+                            data: {deleteContainer: 1, containerId: containerId},
+                                success: function(result) {
+                                    $(window).unbind('beforeunload');
+                                    window.location.replace("../index.php");    
+                                }
+                        })
+                    }
                 }
             })
 
@@ -98,6 +116,7 @@ if ($result = mysqli_query($con, $containerSql)) {
                         url: "../php/editContainerProcess.php",
                         data: {containerId: containerId, containerHeader: containerHeader, items: itemObj},
                             success: function(result) {
+                                $(window).unbind('beforeunload');
                                 window.location.replace("../index.php");
                             }
                         })
@@ -109,28 +128,22 @@ if ($result = mysqli_query($con, $containerSql)) {
                 if($(this).hasClass("cancelBtn")) {
                     window.location.replace("../index.php");
                 }
-
-                //REMOVE CONTAINER BUTTON
-                if($(this).hasClass("removeBtn")) {
-                    var containerId = $(".headerInput").attr("id");
-
-                    $.ajax({
-                        method: "POST",
-                        url: "../php/editContainerProcess.php",
-                        data: {deleteContainer: 1, containerId: containerId},
-                        success: function(result) {
-                            window.location.replace("../index.php");
-                        }
-                    })
-                }
             })
+
+            $(".editContainer").on("keyup change", function() {
+                $(window).bind('beforeunload', function(){
+                    return 'Are you sure you want to leave?';
+                });
+
+                $(".saveBtn").show();
+            })
+
         })
 
 </script>
 <body>
     <nav class="topnav">
         <div class="navIconContainer">
-            <span class="removeBtn navBtn"><img class="navIcon removeIcon" src="../_assets/delete-white-18dp.svg" alt="removeIcon"></span>
             <span class="saveBtn navBtn"><img class="navIcon saveIcon" src="../_assets/save-white-18dp.svg" alt="saveIcon"></span>
             <span class="cancelBtn navBtn"><img class="navIcon cancelIcon" src="../_assets/cancel-white-18dp.svg" alt="cancelIcon"></span>
         </div>
@@ -139,6 +152,7 @@ if ($result = mysqli_query($con, $containerSql)) {
         <ul class="editContainer">
             <header class="editContainerHeader"><input class="headerInput" value="" placeholder="Container title here"></header>
             <div class="addItemBtn dBtn"><img class="addItemButton" alt="addicon" src="../_assets/add_circle_outline-black-18dp.svg"></div>
+            <span class="removeBtn dBtn"><img class="removeIcon" src="../_assets/delete-white-18dp.svg"></span>
         </ul>
     </div>
 </body>

@@ -1,8 +1,6 @@
 <?php
     session_start();
 
-    //echo "Test";
-
     if (!$_COOKIE["active"]) {
         header('Location: pages/settings.php');
         exit;
@@ -17,71 +15,68 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/index/editing.css">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="css/index/container.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <title>Startpage</title>
-    <script>
-        var contentResult;
+        <link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/index/editing.css">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="css/index/container.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <title>Startpage</title>
+        <script>
+            var contentResult;
 
-        $.ajax({
-            method: "POST",
-            url: "php/contentLoading.php",
-            data: {uid: <?php echo $_COOKIE["uid"]; ?>},
-            cache: true,
-            success: function(result) {
-                var contentResult = result;
+            $.ajax({
+                method: "POST",
+                url: "php/contentLoading.php",
+                data: {uid: <?php echo $_COOKIE["uid"]; ?>},
+                cache: true,
+                success: function(result) {
+                    var contentResult = result;
 
-                $(".addContainer").before(contentResult);
-            }
-        })
-
-        $(document).ready(function() {
-            var editStatus = $(".editStatus").val();
-
-            $(".editBtn").on("click", function() {
-                if(editStatus != true) {
-                    //ENABLE EDITING
-                    editStatus = true;
-
-                    enableEditing();
-                } else {
-                    //DISABLE EDITING
-                    disableEditing();
-
-                    editStatus = false;
+                    $(".addContainer").before(contentResult);
                 }
             })
 
-            function enableEditing() {
-                /*$(window).on("beforeunload", function() {
-                    return "";
-                });*/
-                $(".editOverlay, .addContainer").removeClass("hidden");
+            $(document).ready(function() {
+                var editStatus = $(".editStatus").val();
 
-                $(".editOverlay").on("click", function() {
-                    
-                    var containerId = $(this).parent().find(".linkContainerHeader").find("input").val();
+                $(".editBtn").on("click", function() {
+                    if(editStatus != true) {
+                        //ENABLE EDITING
+                        editStatus = true;
 
-                    window.location.replace("pages/editContainer.php?containerId="+containerId);
-                    console.log(containerId);
+                        enableEditing();
+                    } else {
+                        //DISABLE EDITING
+                        disableEditing();
+
+                        editStatus = false;
+                    }
                 })
 
-                $(".addContainer").on("click", function() {
-                    window.location.replace("pages/editContainer.php");
-                })
-            }
+                function enableEditing() {
+                    $(".editOverlay, .addContainer").removeClass("hidden");
 
-            function disableEditing() {
-                $(window).off("beforeunload");
+                    $(".editOverlay").on("click", function() {
+                        
+                        var containerId = $(this).parent().find(".linkContainerHeader").find("input").val();
 
-                $(".editOverlay, .addContainer").addClass("hidden");
-            }
-        })
-    </script>
+                        window.location.replace("pages/editContainer.php?containerId="+containerId);
+                        console.log(containerId);
+                    })
+
+                    $(".addContainer").on("click", function() {
+                        window.location.replace("pages/editContainer.php");
+                    })
+                }
+
+                function disableEditing() {
+                    $(window).off("beforeunload");
+
+                    $(".editOverlay, .addContainer").addClass("hidden");
+                }
+            })
+        </script>
     </head>
     <body>
         <nav class="topnav">
