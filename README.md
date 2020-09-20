@@ -1,7 +1,7 @@
 # Startpage
 <p align="center">
 	<a href="https://github.com/SenneVanderAuwera/startpage/releases">
-		<img src="https://img.shields.io/badge/stable%20version-v2.0.1-green"/>
+		<img src="https://img.shields.io/badge/stable%20version-v2.0.2-green"/>
 	</a>
 	<a href="https://github.com/SenneVanderAuwera/startpage">
 		<img src="https://img.shields.io/badge/build%20version-v2.1.0-red"/>
