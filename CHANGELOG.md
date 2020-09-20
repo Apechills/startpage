@@ -2,6 +2,10 @@
 
 `RELEASED`
 
+### [2.0.2] - 20/09/2020
+#### Fixed
+- Saving items will not create duplicates or glitch out anymore.
+
 ### [2.0.1] - 20/09/2020
 #### Added
 - System for detecting empty fields.
