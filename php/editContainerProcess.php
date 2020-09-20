@@ -15,16 +15,17 @@ if($deleteContainer != 1) {
                             container_header = values(container_header)";
 
     if(mysqli_query($con, $updateContainerSql)) {
+        if($containerId == 0) {
+            $containerLink = mysqli_insert_id($con);
+        } else {
+            $containerLink = $containerId;
+        }
+
         foreach($items as $key => $value) {
             $itemId = $value["itemId"];
             $itemName = $value["itemName"];
             $itemHref = $value["itemHref"];
             $deleted = $value["deleted"];
-            $containerLink = mysqli_insert_id($con);
-
-            if($containerLink == 0) {
-                $containerLink = $containerId;
-            }
             
             $updateItemsSql = "INSERT INTO `items` (item_id, container_link, item_name, item_href, deleted)
             VALUES ('$itemId', '$containerLink', '$itemName', '$itemHref', '$deleted')

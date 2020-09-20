@@ -66,6 +66,7 @@ if ($result = mysqli_query($con, $containerSql)) {
                 //DELETE ITEM
                 if($(this).hasClass("deleteItemBtn")) {
                     $(this).find(".deleted").val(1);
+                    showSaveBtn();
 
                     $(this).parent().hide();
                 }
@@ -111,15 +112,19 @@ if ($result = mysqli_query($con, $containerSql)) {
 
                         itemObj.push(obj);
 
-                        $.ajax({
+                    })
+
+                    console.log(containerId+"\n"+containerHeader+"\n"+itemObj);
+
+                    $.ajax({
                         method: "POST",
                         url: "../php/editContainerProcess.php",
                         data: {containerId: containerId, containerHeader: containerHeader, items: itemObj},
-                            success: function(result) {
-                                $(window).unbind('beforeunload');
-                                window.location.replace("../index.php");
-                            }
-                        })
+                        success: function(result) {
+                            console.log(result);
+                            $(window).unbind('beforeunload');
+                            window.location.replace("../index.php");
+                        }
                     })
 
                 }
@@ -131,12 +136,16 @@ if ($result = mysqli_query($con, $containerSql)) {
             })
 
             $(".editContainer").on("keyup change", function() {
+                showSaveBtn();
+            })
+
+            function showSaveBtn() {
                 $(window).bind('beforeunload', function(){
                     return 'Are you sure you want to leave?';
                 });
 
                 $(".saveBtn").show();
-            })
+            }
 
         })
 
