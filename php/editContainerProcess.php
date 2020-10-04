@@ -1,8 +1,10 @@
 <?php
 require('connect.inc.php');
 
-$containerId = $_POST["containerId"];
-$containerHeader = $_POST["containerHeader"];
+$containerId = addslashes($_POST["containerId"]);
+$containerHeader = addslashes($_POST["containerHeader"]);
+
+echo $containerHeader;
 $items = $_POST["items"];
 $userId = $_COOKIE["uid"];
 $deleteContainer = $_POST["deleteContainer"];
@@ -23,8 +25,8 @@ if($deleteContainer != 1) {
 
         foreach($items as $key => $value) {
             $itemId = $value["itemId"];
-            $itemName = $value["itemName"];
-            $itemHref = $value["itemHref"];
+            $itemName = addslashes($value["itemName"]);
+            $itemHref = addslashes($value["itemHref"]);
             $deleted = $value["deleted"];
             
             $updateItemsSql = "INSERT INTO `items` (item_id, container_link, item_name, item_href, deleted)
