@@ -24,3 +24,6 @@
 - Content updating.
 
 `UNRELEASED`
+### [2.1.0] - 04/10/2020
+#### Added
+- Search system
