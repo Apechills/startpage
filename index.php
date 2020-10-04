@@ -9,7 +9,7 @@
     if ($_SESSION["msg"]) {
         echo $_SESSION["msg"];
         $_SESSION["msg"] = "";
-    }    
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +25,6 @@
         <script>
             var contentResult;
 
-            
-
             $.ajax({
                 method: "POST",
                 url: "php/contentLoading.php",
@@ -36,13 +34,63 @@
                     var contentResult = result;
 
                     $(".addContainer").before(contentResult);
+                    
+                    //SEARCH SYSTEM
+                    $(".searchBar").on("keyup", function(e) {
+                        var input = $(this).val().toLowerCase();
+
+                        if(input != "" && e.keyCode != 38 && e.keyCode != 40) {
+                            $(".searchResults").html(""); //EMPTY SEARCH WITH EVERY NEW CHARACTER
+
+                            $(".linkA").each(function() {
+                                var linkName = $(this).html();
+                                var linkHref = $(this).attr("href");
+                                var searchLink = '<a class="searchLink" href="'+linkHref+'">'+linkName+'</a>';
+
+                                if(linkName.toLowerCase().includes(input) || linkHref.toLowerCase().includes(input)) {
+                                    $(searchLink).appendTo(".searchResults");
+                                }
+
+                                if($(".searchResults").html() != "") {
+                                    $(".searchResults").show();
+                                } else {
+                                    $(".searchResults").hide();
+                                }
+                            })
+                        } else {
+                            $(".searchResults").hide();
+                        }
+                    })
+
+                    $(document).keydown(function(e) {
+                        if(e.keyCode == 40) {
+                            if($(".searchLink:focus").length == 0) {
+                                $(".searchLink").first().focus();
+                            } else {
+                                $(".searchLink:focus").next().focus();
+                            }
+                        } else if(e.keyCode == 38) {
+                            $(".searchLink:focus").prev().focus();
+                        }
+                    })
+
+                    $(".searchBar").focus();
                 }
             })
 
             $(document).ready(function() {
-                $(".searchBar").hide(); //TEMPORARY
-
                 var editStatus = $(".editStatus").val();
+
+                $(document).mouseup(function(e) {
+                    var searchBar = $(".searchBar");
+                    var searchResults = $(".searchResults");
+
+                    if(!searchBar.is(e.target) && !searchResults.is(e.target) && searchResults.has(e.target).length === 0) {
+                        $(".searchResults").hide();
+                    }else if(searchBar.is(e.target) && searchBar.val() != "") {
+                        $(".searchResults").show();
+                    }
+                })
 
                 $(".editBtn").on("click", function() {
                     if(editStatus != true) {
@@ -66,7 +114,6 @@
                         var containerId = $(this).parent().find(".linkContainerHeader").find("input").val();
 
                         window.location.replace("pages/editContainer.php?containerId="+containerId);
-                        console.log(containerId);
                     })
 
                     $(".addContainer").on("click", function() {
@@ -85,6 +132,8 @@
     <body>
         <nav class="topnav">
             <input type="search" class="searchBar" placeholder="Search">
+            <ul class="searchResults" style="display: none;">
+            </ul>
             <div class="navIconContainer">
                 <input class="editStatus" value="false" disabled hidden>
                 <span class="editBtn btn"><img class="navIcon editIcon" src="_assets/edit-24px.svg" alt="editIcon"></span>

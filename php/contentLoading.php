@@ -1,6 +1,6 @@
 <?php
 require('connect.inc.php');
-$uid = $_POST["uid"];
+$uid = $_COOKIE["uid"];
 
 $loadContainersSql = "SELECT * FROM containers WHERE userid = $uid AND deleted=0";
 

@@ -6,6 +6,7 @@ nav.topnav {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 input.searchBar {
@@ -36,4 +37,36 @@ input.searchBar:focus {
 .navIconContainer {
     position: absolute;
     right: 20px;
+}
+
+.searchResults {
+    background-color: white;
+    width: 50%;
+    min-height: 65px;
+    position: absolute;
+    top: 60px;
+    z-index: 1;
+    border-radius: 15px;
+    box-shadow:2px 2px 7px 3px rgba(0,0,0,0.2);
+    margin: 0;
+    padding: 0 0 15px 0;
+    list-style-type: none;
+}
+
+.searchLink {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    padding: 9px 16px;
+    box-sizing: border-box;
+    color: #071013;
+}
+
+.searchLink:first-child {
+    border-radius: 15px 15px 0 0;
+}
+
+.searchLink:hover, .searchLink:focus {
+    background-color: #a8abab;
+    outline: none;
 }
