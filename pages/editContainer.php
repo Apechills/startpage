@@ -14,15 +14,15 @@ if (!$_COOKIE["active"]) {
 
 if ($result = mysqli_query($con, $containerSql)) {
     while($row = mysqli_fetch_assoc($result)) {
-        $containerHeader = $row["container_header"];
+        $containerHeader = addslashes($row["container_header"]);
 
         $itemSql = "SELECT * FROM `items` WHERE `container_link` = $containerId AND `deleted` = 0";
 
         if($itemResult = mysqli_query($con, $itemSql)) {
             while($itemRow = mysqli_fetch_assoc($itemResult)) {
                 $itemId = $itemRow['item_id'];
-                $itemName = $itemRow['item_name'];
-                $itemHref = $itemRow['item_href'];
+                $itemName = addslashes($itemRow['item_name']);
+                $itemHref = addslashes($itemRow['item_href']);
 
                 $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName" value="'. $itemName .'"><input class="editItemHref" value="'. $itemHref .'"><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><img class="deleteItemIcon" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
             }

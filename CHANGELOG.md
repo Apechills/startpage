@@ -1,6 +1,10 @@
 ## CHANGELOG
 
 `RELEASED`
+### [2.1.1] - 05/10/2020
+#### Fixed
+- Issue where edit page is empty when an apostrophe is in the name.
+- Issue where canceling an edit was not possible.
 
 ### [2.1.0] - 04/10/2020
 #### Added

@@ -6,8 +6,8 @@ $loadContainersSql = "SELECT * FROM containers WHERE userid = $uid AND deleted=0
 
 if($containerResult = mysqli_query($con, $loadContainersSql)) {
     while($containerRow = mysqli_fetch_assoc($containerResult)) {
-        $containerId = stripslashes($containerRow['container_id']);
-        $containerHeader = stripslashes($containerRow['container_header']);
+        $containerId = $containerRow['container_id'];
+        $containerHeader = $containerRow['container_header'];
 
         echo '  <ul id="'.$containerId.'" class="linkContainer">
                 <div class="editOverlay hidden"><img class="overlayIcon" src="_assets/edit-24px.svg"></div>
@@ -17,7 +17,7 @@ if($containerResult = mysqli_query($con, $loadContainersSql)) {
 
         if($itemResult = mysqli_query($con, $loadItemsSql)) {
             while($itemRow = mysqli_fetch_assoc($itemResult)) {
-                echo '<li class="linkLi"><a href="'.stripslashes($itemRow['item_href']).'" class="linkA">'.stripslashes($itemRow['item_name']).'</a></li>';
+                echo '<li class="linkLi"><a href="'.$itemRow['item_href'].'" class="linkA">'.$itemRow['item_name'].'</a></li>';
             }
         }
 
