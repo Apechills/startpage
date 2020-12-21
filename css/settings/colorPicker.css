@@ -1,0 +1,19 @@
+.colorForm {
+    flex-direction: column;
+}
+
+.colorForm div {
+    margin-top: 3px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.colorForm input[type=color] {
+    width: 40%;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+}

@@ -24,7 +24,7 @@ if ($result = mysqli_query($con, $containerSql)) {
                 $itemName = addslashes($itemRow['item_name']);
                 $itemHref = addslashes($itemRow['item_href']);
 
-                $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName" value="'. $itemName .'"><input class="editItemHref" value="'. $itemHref .'"><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><img class="deleteItemIcon" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
+                $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName c2_bg" value="'. $itemName .'"><input class="editItemHref c2_bg" value="'. $itemHref .'"><div class="dBtn deleteItemBtn c2_bg"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
             }
         }
     }
@@ -36,18 +36,21 @@ if ($result = mysqli_query($con, $containerSql)) {
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" href="../favicon.ico" type="image/gif" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/navbar.css">
     <link rel="stylesheet" type="text/css" href="../css/index/container.css">
     <link rel="stylesheet" type="text/css" href="../css/editContainer/editContainer.css">
+    <link rel="stylesheet" type="text/css" href="../css/colors.php">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <title>Startpage | Edit</title>
 </head>
 <script>
         $(document).ready(function() {
-            var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><img class="deleteItemIcon" alt="removeicon" src="../_assets/remove_circle_outline-black-18dp.svg"></div></div>';
+            var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName c2_bg" value=""><input class="editItemHref c2_bg" value=""><div class="dBtn deleteItemBtn c2_bg"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
             var containerId = '<?php echo $containerId; ?>';
 
             $(".saveBtn").hide();
@@ -151,18 +154,18 @@ if ($result = mysqli_query($con, $containerSql)) {
         })
 
 </script>
-<body>
-    <nav class="topnav">
+<body class="c1_bg">
+    <nav class="topnav c3_bg">
         <div class="navIconContainer">
-            <span class="saveBtn navBtn"><img class="navIcon saveIcon" src="../_assets/save-white-18dp.svg" alt="saveIcon"></span>
-            <span class="cancelBtn navBtn"><img class="navIcon cancelIcon" src="../_assets/cancel-white-18dp.svg" alt="cancelIcon"></span>
+            <span class="saveBtn navBtn"><i class="navIcon saveIcon c2_cl material-icons-outlined">save</i></span>
+            <span class="cancelBtn navBtn"><i class="navIcon cancelIcon c2_cl material-icons-outlined">cancel_circle</i></span>
         </div>
     </nav>
     <div class="contentWrapper">
-        <ul class="editContainer">
-            <header class="editContainerHeader"><input class="headerInput" value="" placeholder="Container title here"></header>
-            <div class="addItemBtn dBtn"><img class="addItemButton" alt="addicon" src="../_assets/add_circle_outline-black-18dp.svg"></div>
-            <span class="removeBtn dBtn"><img class="removeIcon" src="../_assets/delete-white-18dp.svg"></span>
+        <ul class="editContainer c4_bg">
+            <header class="editContainerHeader c3_bg"><input class="headerInput" value="" placeholder="Container title here"></header>
+            <div class="addItemBtn dBtn c2_bg"><i class="addItemButton material-icons-outlined c3_cl">add_circle</i></div>
+            <span class="removeBtn dBtn c3_bg"><i class="removeIcon material-icons-outlined c2_cl">delete</i></span>
         </ul>
     </div>
 </body>

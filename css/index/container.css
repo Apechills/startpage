@@ -39,9 +39,10 @@ a.linkA {
     color: #071013;
     font-family: 'Roboto';
     font-weight: 500;
+    border-left: solid 5px #a8abab transparent;
+    transition: 0.1s;
 }
 
 a.linkA:hover {
-    color: #ffffff;
-    background-color: #a8abab;
+    filter: brightness(40%);
 }

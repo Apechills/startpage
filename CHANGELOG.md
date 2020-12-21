@@ -39,3 +39,8 @@
 ---
 
 `UNRELEASED`
+### [2.1.2] - 
+#### Changed
+- Changed css of search results to have a cleaner style.
+- Added color management system.
+- Changed svg icons to material icons font.

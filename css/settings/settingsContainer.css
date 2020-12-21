@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 div.contentWrapper {
+    display: flex;
     justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(600px, auto));
-    grid-gap: 20px;
-    max-width: 80%;
-    margin: 10px auto;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+    flex-direction: column;
 }
 
 ul.settingsContainer {
@@ -17,6 +17,7 @@ ul.settingsContainer {
     border-radius: 15px;
     box-shadow:2px 2px 7px 3px rgba(0,0,0,0.2);
     margin: auto;
+    margin-top: 20px;
 }
 
 header.settingsContainerHeader {

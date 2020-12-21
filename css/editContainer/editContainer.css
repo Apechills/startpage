@@ -34,7 +34,7 @@ div.contentWrapper {
 
 .editInputWrapper input {
     border:none;
-    border-bottom: 4px solid #a8abab;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     border-radius: 3px;
     background-color: rgba(205, 205, 205, 1);
@@ -45,7 +45,7 @@ div.contentWrapper {
 
 .editInputWrapper input:focus {
     background-color: #a8abab;
-    border-bottom: 4px solid #cdcdcd;
+    border-bottom: 4px solid rgb(0, 0, 0, 0.4);
     transition: 0.2s;
 }
 
@@ -61,7 +61,7 @@ div.contentWrapper {
     box-sizing: border-box;
     border-radius: 3px;
     background-color: #cdcdcd;
-    border-bottom: 4px solid #a8abab;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -71,6 +71,7 @@ div.contentWrapper {
 
 .deleteItemIcon {
     height: 70%;
+    font-size: 30px !important;
 }
 
 .editContainerHeader {
@@ -100,10 +101,9 @@ div.contentWrapper {
 .addItemBtn {
     margin-top: 3px;
     width: 90%;
-    border:none;
-    border-bottom: 4px solid #a8abab;
+    border-bottom: 4px solid rgb(0, 0, 0, 0.2);
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: rgba(205, 205, 205, 1);
     height: 44px;
     font-family: 'Roboto', sans-serif;
@@ -113,12 +113,12 @@ div.contentWrapper {
     justify-content: center;
 }
 
-.addItemBtn img {
+.addItemBtn i {
     height: 70%;
+    font-size: 30px !important;
 }
 
 .removeBtn {
-    background-color: #071013;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -133,4 +133,6 @@ div.contentWrapper {
 
 .removeIcon {
     height: 70%;
+    font-size: 30px !important;
+    transform: translateY(-1px);
 }

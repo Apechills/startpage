@@ -4,8 +4,16 @@ body {
     margin: 0;
     background-color: #cdcdcd;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
 .btn, .dBtn, .navBtn {
     cursor: pointer;
+}
+
+i {
+    -webkit-user-select: none;       
+    -moz-user-select: none; 
+    -ms-user-select: none;
+    user-select: none;
 }
