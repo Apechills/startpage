@@ -3,7 +3,7 @@
 `UNRELEASED`
 
 `RELEASED`
-### [2.1.2] - 
+### [2.1.2] - 05/01/2021
 #### Changed
 - Changed css of search results to have a cleaner style.
 - Added color management system.
