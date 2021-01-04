@@ -1,6 +1,8 @@
 ## CHANGELOG
 
 `UNRELEASED`
+
+`RELEASED`
 ### [2.1.2] - 
 #### Changed
 - Changed css of search results to have a cleaner style.
@@ -8,12 +10,13 @@
 - Changed svg icons to material icons font.
 - Fixed container sizes being irregular.
 - Added first itteration of mobile friendly UI.
+---
 
-`RELEASED`
 ### [2.1.1] - 05/10/2020
 #### Fixed
 - Issue where edit page is empty when an apostrophe is in the name.
 - Issue where canceling an edit was not possible.
+---
 
 ### [2.1.0] - 04/10/2020
 #### Added
@@ -31,7 +34,6 @@
 #### Added
 - System for detecting empty fields.
 - Warnings for leaving edit page with unsaved changes.
----
 
 #### Changed
 - Location of remove container button for intuitivness.
