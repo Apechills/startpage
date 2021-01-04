@@ -1,5 +1,14 @@
 ## CHANGELOG
 
+`UNRELEASED`
+### [2.1.2] - 
+#### Changed
+- Changed css of search results to have a cleaner style.
+- Added color management system.
+- Changed svg icons to material icons font.
+- Fixed container sizes being irregular.
+- Added first itteration of mobile friendly UI.
+
 `RELEASED`
 ### [2.1.1] - 05/10/2020
 #### Fixed
@@ -36,11 +45,3 @@
 - User system, log in, log out and user creation.
 - Content loading.
 - Content updating.
----
-
-`UNRELEASED`
-### [2.1.2] - 
-#### Changed
-- Changed css of search results to have a cleaner style.
-- Added color management system.
-- Changed svg icons to material icons font.
