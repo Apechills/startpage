@@ -21,6 +21,4 @@
             $C4 = $row["color_4"]; //ACCENT COLOR 2
         }
     }
-
-    echo $C1;
 ?>
