@@ -3,7 +3,7 @@
 div.contentWrapper {
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 225px));
     grid-auto-rows: minmax(200px, auto);
     grid-gap: 20px;
     max-width: 80%;

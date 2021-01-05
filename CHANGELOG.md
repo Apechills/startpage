@@ -3,13 +3,22 @@
 `UNRELEASED`
 
 `RELEASED`
+### [2.2.1] - 05/01/2021
+#### Fixed
+- Fixed issue where colors of icons were not visible by added default color scheme.
+---
+
 ### [2.2.0] - 05/01/2021
 #### Changed
 - Changed css of search results to have a cleaner style.
-- Added color management system.
 - Changed svg icons to material icons font.
-- Fixed container sizes being irregular.
+
+#### Added
+- Added color management system.
 - Added first itteration of mobile friendly UI.
+
+#### Fixed
+- Fixed container sizes being irregular.
 ---
 
 ### [2.1.1] - 05/10/2020
