@@ -34,3 +34,17 @@
 .c4_bg {
     background-color: <?php echo $C4 ?> !important;
 }
+
+.c5_bg {
+    background-color: <?php echo $C5 ?> !important;
+}
+
+.c5_cl {
+    color: <?php echo $C5 ?> !important;
+}
+
+/*CUSTOM*/
+
+.editInputWrapper input:focus {
+    border-bottom: 4px solid <?php echo $C3 ?> !important;
+}

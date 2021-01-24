@@ -40,9 +40,9 @@ a.linkA {
     font-family: 'Roboto';
     font-weight: 500;
     border-left: solid 5px #a8abab transparent;
-    transition: 0.1s;
+    transition: 0.05s;
 }
 
-a.linkA:hover {
-    filter: brightness(40%);
+.linkA:hover {
+    background-color: rgb(0,0,0,0.1)
 }

@@ -17,12 +17,12 @@ if($containerResult = mysqli_query($con, $loadContainersSql)) {
 
         if($itemResult = mysqli_query($con, $loadItemsSql)) {
             while($itemRow = mysqli_fetch_assoc($itemResult)) {
-                if (substr($itemRow['item_name'],2) == "//") {
+                if (substr($itemRow['item_name'],0,2) == "//") {
                   //Perform action
                     echo (file_get_contents($itemRow['item_href']));
                   break;
                 } else {
-                  echo '<li class="linkLi"><a href="'.$itemRow['item_href'].'" class="linkA c3_cl">'.$itemRow['item_name'].'</a></li>';
+                  echo '<li class="linkLi"><a href="'.$itemRow['item_href'].'" class="linkA c5_cl">'.$itemRow['item_name'].'</a></li>';
                 }
             }
         }

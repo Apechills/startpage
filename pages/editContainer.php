@@ -20,12 +20,14 @@ if ($result = mysqli_query($con, $containerSql)) {
 
         if($itemResult = mysqli_query($con, $itemSql)) {
             while($itemRow = mysqli_fetch_assoc($itemResult)) {
-                $itemId = $itemRow['item_id'];
-                $itemName = addslashes($itemRow['item_name']);
-                $itemHref = addslashes($itemRow['item_href']);
+                /*$itemId = array($itemRow['item_id'];
+                $itemName = array('item_name'=>addslashes($itemRow['item_name']));
+                $itemHref = array('item_href'=>addslashes($itemRow['item_href']));*/
 
-                $itemInput .= '<div id="'. $itemId .'" class="editInputWrapper"><input class="editItemName c2_bg" value="'. $itemName .'"><input class="editItemHref c2_bg" value="'. $itemHref .'"><div class="dBtn deleteItemBtn c2_bg"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
+                $items[] = array_merge(array('item_id'=>$itemRow['item_id'], 'item_name'=>$itemRow['item_name'], 'item_href'=>$itemRow['item_href']));
             }
+
+            $items = json_encode($items);
         }
     }
 }
@@ -39,32 +41,44 @@ if ($result = mysqli_query($con, $containerSql)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" href="../favicon.ico" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../css/index/container.css">
-    <link rel="stylesheet" type="text/css" href="../css/editContainer/editContainer.css">
-    <link rel="stylesheet" type="text/css" href="../css/colors.php">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/index/container.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/editContainer/editContainer.css?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/colors.php?v=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <title>Startpage | Edit</title>
 </head>
 <script>
         $(document).ready(function() {
-            var itemRow = '<div id="" class="editInputWrapper"><input class="editItemName c2_bg" value=""><input class="editItemHref c2_bg" value=""><div class="dBtn deleteItemBtn c2_bg"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
+            var itemRowTemplate = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
             var containerId = '<?php echo $containerId; ?>';
+            var items = JSON.parse('<?php echo $items ?>');
+
+            console.log(items);
 
             $(".saveBtn").hide();
-            $(".addItemBtn").before('<?php echo $itemInput; ?>');
 
+            //LOAD HEADER + FOCUS ON HEADER
             if(containerId != '') {
                 $(".headerInput").attr('id', <?php echo $containerId ?>).val('<?php echo $containerHeader; ?>').focus();
             }
+
+            //LOAD ITEMS
+            for (var key in items) {
+                var itemId = items[key].item_id;
+
+                console.log(items[key]);
+            }
+
+            //$(".addItemBtn").before(addRow());
 
             //DYNAMIC BUTTONS
             $(".contentWrapper").on("click", ".dBtn", function() {
                 //ADD ITEM
                 if($(this).hasClass("addItemBtn")) {
-                    $(".addItemBtn").before(itemRow);
+                    $(".addItemBtn").before(itemRowTemplate);
                 }
 
                 //DELETE ITEM
@@ -164,7 +178,7 @@ if ($result = mysqli_query($con, $containerSql)) {
     <div class="contentWrapper">
         <ul class="editContainer c4_bg">
             <header class="editContainerHeader c3_bg"><input class="headerInput" value="" placeholder="Container title here"></header>
-            <div class="addItemBtn dBtn c2_bg"><i class="addItemButton material-icons-outlined c3_cl">add_circle</i></div>
+            <div class="addItemBtn dBtn"><i class="addItemButton material-icons-outlined c3_cl">add_circle</i></div>
             <span class="removeBtn dBtn c3_bg"><i class="removeIcon material-icons-outlined c2_cl">delete</i></span>
         </ul>
     </div>

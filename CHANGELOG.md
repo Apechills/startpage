@@ -2,6 +2,18 @@
 
 `UNRELEASED`
 
+### [2.2.2] -
+#### Changed
+- Changed color names in settings.
+- Changed edit container input styles.
+- Changed hover style on links.
+
+#### Fixed
+- Fixed API substr to correct syntax.
+
+#### Added
+- Added container text color option.
+
 `RELEASED`
 ### [2.2.1] - 05/01/2021
 #### Fixed
