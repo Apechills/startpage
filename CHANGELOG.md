@@ -2,7 +2,8 @@
 
 `UNRELEASED`
 
-### [2.2.2] -
+`RELEASED`
+### [2.2.2] - 25/01/2021
 #### Changed
 - Changed color names in settings.
 - Changed edit container input styles.
@@ -16,8 +17,8 @@
 #### Added
 - Added container text color option.
 - Added accountname on the bottom of the index page.
+---
 
-`RELEASED`
 ### [2.2.1] - 05/01/2021
 #### Fixed
 - Fixed issue where colors of icons were not visible by added default color scheme.
