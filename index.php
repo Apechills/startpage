@@ -18,11 +18,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
-        <link rel="stylesheet" type="text/css" href="css/main.css?v=1.0">
-        <link rel="stylesheet" type="text/css" href="css/index/editing.css?v=1.0">
-        <link rel="stylesheet" type="text/css" href="css/navbar.css?v=1.0">
-        <link rel="stylesheet" type="text/css" href="css/index/container.css?v=1.0">
-        <link rel="stylesheet" type="text/css" href="css/colors.php?v=1.0">
+        <link rel="stylesheet" type="text/css" href="css/main.css?v=2.2.2">
+        <link rel="stylesheet" type="text/css" href="css/index/editing.css?v=2.2.2">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css?v=2.2.2">
+        <link rel="stylesheet" type="text/css" href="css/index/container.css?v=2.2.2">
+        <link rel="stylesheet" type="text/css" href="css/colors.php?v=2.2.2">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <title>Startpage</title>
@@ -149,5 +149,6 @@
                 <img class="addOverlayIcon" src="_assets\add-white-18dp.svg" alt="addContainer">
             </ul>
         </div>
+        <div class="usernameBox"><?php echo $_COOKIE['username']; ?></div>
     </body>
 </html>

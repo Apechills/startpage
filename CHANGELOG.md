@@ -7,12 +7,15 @@
 - Changed color names in settings.
 - Changed edit container input styles.
 - Changed hover style on links.
+- Changed the way the loading system works on the edit container page.
 
 #### Fixed
-- Fixed API substr to correct syntax.
+- Fixed API function substr to correct syntax.
+- Fixed the placement of the container on the editContainer.php page.
 
 #### Added
 - Added container text color option.
+- Added accountname on the bottom of the index page.
 
 `RELEASED`
 ### [2.2.1] - 05/01/2021

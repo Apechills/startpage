@@ -24,7 +24,9 @@ if ($result = mysqli_query($con, $containerSql)) {
                 $itemName = array('item_name'=>addslashes($itemRow['item_name']));
                 $itemHref = array('item_href'=>addslashes($itemRow['item_href']));*/
 
-                $items[] = array_merge(array('item_id'=>$itemRow['item_id'], 'item_name'=>$itemRow['item_name'], 'item_href'=>$itemRow['item_href']));
+                $items[] = array_merge(array('item_id'=>htmlspecialchars($itemRow['item_id'], ENT_QUOTES), 'item_name'=>htmlspecialchars($itemRow['item_name'], ENT_QUOTES), 'item_href'=>htmlspecialchars($itemRow['item_href'], ENT_QUOTES)));
+
+                //echo htmlspecialchars($itemRow['item_name'], ENT_QUOTES);
             }
 
             $items = json_encode($items);
@@ -41,22 +43,19 @@ if ($result = mysqli_query($con, $containerSql)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" href="../favicon.ico" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.css?v=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/index/container.css?v=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/editContainer/editContainer.css?v=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/colors.php?v=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v=2.2.2">
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css?v=2.2.2">
+    <link rel="stylesheet" type="text/css" href="../css/index/container.css?v=2.2.2">
+    <link rel="stylesheet" type="text/css" href="../css/editContainer/editContainer.css?v=2.2.2">
+    <link rel="stylesheet" type="text/css" href="../css/colors.php?v=2.2.2">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <title>Startpage | Edit</title>
 </head>
 <script>
         $(document).ready(function() {
-            var itemRowTemplate = '<div id="" class="editInputWrapper"><input class="editItemName" value=""><input class="editItemHref" value=""><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
             var containerId = '<?php echo $containerId; ?>';
             var items = JSON.parse('<?php echo $items ?>');
-
-            console.log(items);
 
             $(".saveBtn").hide();
 
@@ -66,10 +65,18 @@ if ($result = mysqli_query($con, $containerSql)) {
             }
 
             //LOAD ITEMS
+            function addRow(itemId, itemName, itemHref) {
+                var itemRowTemplate = '<div id="'+itemId+'" class="editInputWrapper"><input class="editItemName" value="'+itemName+'"><input class="editItemHref" value="'+itemHref+'"><div class="dBtn deleteItemBtn"><input hidden type="text" class="deleted" value="0"><i class="deleteItemIcon c3_cl material-icons-outlined">remove_circle</i></div></div>';
+                
+                $(".addItemBtn").before(itemRowTemplate);
+            }
+
             for (var key in items) {
                 var itemId = items[key].item_id;
+                var itemName = items[key].item_name;
+                var itemHref = items[key].item_href;
 
-                console.log(items[key]);
+                addRow(itemId, itemName, itemHref);
             }
 
             //$(".addItemBtn").before(addRow());
@@ -78,7 +85,7 @@ if ($result = mysqli_query($con, $containerSql)) {
             $(".contentWrapper").on("click", ".dBtn", function() {
                 //ADD ITEM
                 if($(this).hasClass("addItemBtn")) {
-                    $(".addItemBtn").before(itemRowTemplate);
+                    addRow("", "", "");
                 }
 
                 //DELETE ITEM
