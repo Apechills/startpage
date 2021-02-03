@@ -55,7 +55,11 @@ if ($result = mysqli_query($con, $containerSql)) {
 <script>
         $(document).ready(function() {
             var containerId = '<?php echo $containerId; ?>';
-            var items = JSON.parse('<?php echo $items ?>');
+            var items = '<?php echo $items ?>';
+
+            if(items != '') {
+                items = JSON.parse('<?php echo $items ?>');
+            }
 
             $(".saveBtn").hide();
 
@@ -139,14 +143,12 @@ if ($result = mysqli_query($con, $containerSql)) {
 
                     })
 
-                    console.log(containerId+"\n"+containerHeader+"\n"+itemObj);
-
                     $.ajax({
                         method: "POST",
                         url: "../php/editContainerProcess.php",
                         data: {containerId: containerId, containerHeader: containerHeader, items: itemObj},
                         success: function(result) {
-                            console.log(result);
+                            //console.log(result);
                             $(window).unbind('beforeunload');
                             window.location.replace("../index.php");
                         }
