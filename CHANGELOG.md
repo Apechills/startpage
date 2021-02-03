@@ -3,6 +3,10 @@
 `UNRELEASED`
 
 `RELEASED`
+### [2.2.3] - 03/01/2021
+#### Fixed
+- Fixed bug where adding a container resulted in an error.
+
 ### [2.2.2] - 25/01/2021
 #### Changed
 - Changed color names in settings.
